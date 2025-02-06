@@ -167,7 +167,7 @@ const updateSubwork = async (req, res) => {
 
       subwork.details.push({
         id: `${Date.now()}${Math.floor(Math.random() * 10000)}`,
-        name: name || "Unnamed",
+        name: name || "",
         length: length || 0,
         breadth: breadth || 0,
         depth: depth || 0,
@@ -298,9 +298,9 @@ const initializeDefaultFields = async (userId) => {
 
   if (!existingFields) {
     const defaultFields = [
-      { name: "foundation", units: [{ name: "SFT", value: 0 }, { name: "CFT", value: 0 }] },
-      { name: "painting", units: [{ name: "SFT", value: 0 }, { name: "CFT", value: 0 }] },
-      { name: "centering", units: [{ name: "SFT", value: 0 }, { name: "CFT", value: 0 }] },
+      { name: "Foundation", units: [{ name: "SFT", value: 0 }, { name: "CFT", value: 0 }] },
+      { name: "Painting", units: [{ name: "SFT", value: 0 }, { name: "CFT", value: 0 }] },
+      { name: "Centering", units: [{ name: "SFT", value: 0 }, { name: "CFT", value: 0 }] },
     ];
 
     const newFields = new UserFields({ userId, fields: defaultFields });
@@ -785,7 +785,7 @@ const updateReduction = async (req, res) => {
 
       subwork.reductions.push({
         id: `${Date.now()}${Math.floor(Math.random() * 10000)}`,
-        name: name || "Unnamed",
+        name: name || "-",
         length: length || 0,
         breadth: breadth || 0,
         depth: depth || 0,

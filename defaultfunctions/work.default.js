@@ -1,7 +1,7 @@
 const Work = require('../models/Works');
 
 exports.initializeWork = async (pid)=>{
-    let defaultWorks = ["foundation","masonry","centering","flooring","painting"];
+    let defaultWorks = ["Foundation","Masonry","Centering","Flooring","Painting"];
     // let count=1;
     defaultWorks.forEach(async (work) => {
         const newWork = new Work({

@@ -67,10 +67,12 @@ const downloadsubworkPdf = async (req, res) => {
         if (!project) {
             return res.status(404).json({ message: "Project not found" });
         }
+        // console.log("\n\n Subwork name = "+subwork.name+"\n\n");
         let payload = {
             project: project.name,
             clientName: project.clientDetails.clientname,
             work: work.name,
+            nameofsubwork:subwork.name,
             subworks: subwork
         };
         const response = await fetch(`${process.env.PDF_URL}/generate-pdf-subwork`, {
