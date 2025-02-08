@@ -1,5 +1,5 @@
 const router= require('express').Router();
-const {AddUser,LoginUser,AddProject,AddWork,updateReduction,AddSubwork,deleteSubworkreduction,updateSubworkReduction,GetSubWorksDetailed,GenPdf,deleteWork,deleteSubWork,deleteProject,updateSubworkUnits,deleteSubwork,updateSubworkDetail,updateSubwork,GetWorks,GetSubWorks,GetProjects,addOrUpdateFields,getDefaultValues}=require('../controllers/controller');
+const {AddUser,LoginUser,AddProject,AddWork,updateReduction,AddSubwork,deleteSubworkreduction,updateSubworkReduction,GetSubWorksDetailed,GenPdf,deleteWork,deleteSubWork,updateNameSubwork,deleteProject,updateSubworkUnits,deleteSubwork,updateSubworkDetail,updateSubwork,GetWorks,GetSubWorks,GetProjects,addOrUpdateFields,getDefaultValues}=require('../controllers/controller');
 const {excellformat,downloadsubworkPdf, downloadsubworkXcell}=require('../controllers/pdf');
 const authenticateToken = require('../middleware/AuthMiddleware');
 
@@ -27,7 +27,7 @@ router.put("/updateSubworkDetail/:wid/:detailId",authenticateToken,updateSubwork
 router.put("/updateSubworkReduction/:wid/:detailId",authenticateToken,updateSubworkReduction);
 router.put("/save-units/:wid",authenticateToken,updateSubworkUnits);
 router.put("/addreductions/:swid",authenticateToken,updateReduction);
-
+router.put("/updateNameofSubWork/:swid",authenticateToken,updateNameSubwork);
 router.delete('/deleteSubWork/:swid',authenticateToken, deleteSubWork);
 // Default Values
 router.post('/addDefault',authenticateToken, addOrUpdateFields);

@@ -802,5 +802,27 @@ const updateReduction = async (req, res) => {
   }
 };
 
+const updateNameSubwork = async (req, res) => {
 
-module.exports = { AddUser, updateReduction, deleteSubworkreduction, updateSubworkReduction, deleteSubwork, GenPdf, deleteSubWork, deleteProject, deleteWork, updateSubworkUnits, updateSubworkDetail, LoginUser, AddProject, AddWork, AddSubwork, GetWorks, GetProjects, GetSubWorks, addOrUpdateFields, getDefaultValues, GetSubWorksDetailed, updateSubwork };
+  try {
+    const { swid } = req.params;
+    const { name } = req.body;
+
+    const updatedSubwork = await Subwork.findByIdAndUpdate(
+      swid,
+      { name },
+      { new: true }
+    );
+
+    if (!updatedSubwork) {
+      return res.status(404).json({ message: "Subwork not found" });
+    }
+
+    res.status(201).json({ message: "Subwork updated successfully"});
+  } catch (error) {
+    res.status(500).json({ message: "Error updating subwork", error });
+  }
+
+}
+
+module.exports = { AddUser,updateNameSubwork, updateReduction, deleteSubworkreduction, updateSubworkReduction, deleteSubwork, GenPdf, deleteSubWork, deleteProject, deleteWork, updateSubworkUnits, updateSubworkDetail, LoginUser, AddProject, AddWork, AddSubwork, GetWorks, GetProjects, GetSubWorks, addOrUpdateFields, getDefaultValues, GetSubWorksDetailed, updateSubwork };
